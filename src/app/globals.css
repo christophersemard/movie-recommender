@@ -3,19 +3,58 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* styles/tailwind.css */
+/* styles/tailwind.css */
+@layer components {
+    .btn-accentYellow {
+        @apply bg-accentYellow text-black py-2 px-6 font-medium text-lg transition-all duration-300 ease-in-out;
+    }
+
+    .btn-accentYellow:hover {
+        @apply bg-yellow-600 shadow-lg;
+    }
+
+    .btn-accentYellow-outline {
+        @apply border-2 border-accentYellow text-accentYellow py-2 px-6 font-medium text-lg transition-all duration-300 ease-in-out;
+    }
+
+    .btn-accentYellow-outline:hover {
+        @apply bg-accentYellow text-black shadow-lg;
+    }
+}
+
+/* styles/tailwind.css */
+@layer components {
+    .btn-darkAccent {
+        @apply bg-black  bg-opacity-20 text-textPrimary py-2 px-6 font-medium text-lg transition-all duration-300 ease-in-out;
+    }
+
+    .btn-darkAccent:hover {
+        @apply bg-black  bg-opacity-60 shadow-lg;
+    }
+
+    .btn-darkAccent-outline {
+        @apply border-2 border-accentDark  text-accentDark py-2 px-6 font-medium text-lg transition-all duration-300 ease-in-out;
+    }
+
+    .btn-darkAccent-outline:hover {
+        @apply bg-accentDark text-textPrimary shadow-lg;
+    }
 }

@@ -81,6 +81,8 @@ npm run build
 - Les films sont issus d'un jeu de données pédagogique statique ; les informations ne sont donc pas actualisées.
 - Les affiches distantes utilisent le domaine d'images TMDB. Les droits et conditions de réutilisation doivent être contrôlés avant tout usage commercial.
 
+> Documentation de projet revue en août 2026.
+
 ## Auteur
 
 Projet réalisé par [Christopher Semard](https://github.com/christophersemard) dans le cadre de sa formation en développement full-stack.

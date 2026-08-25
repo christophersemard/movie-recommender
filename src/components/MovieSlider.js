@@ -3,14 +3,17 @@ import React, { useState, useEffect } from "react";
 
 const MovieSlider = ({ movies, setMovies, handleReshowQuestionnaire }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [alreadySeen, setAlreadySeen] = useState([]);
+    const [alreadySeen, setAlreadySeen] = useState(() => {
+        if (typeof window === "undefined") {
+            return [];
+        }
 
-    useEffect(() => {
-        // Charger les films déjà vus depuis localStorage
-        const seenMovies =
-            JSON.parse(localStorage.getItem("alreadySeen")) || [];
-        setAlreadySeen(seenMovies);
-    }, []);
+        try {
+            return JSON.parse(localStorage.getItem("alreadySeen")) || [];
+        } catch {
+            return [];
+        }
+    });
 
     useEffect(() => {
         // Sauvegarder la liste des films déjà vus dans localStorage

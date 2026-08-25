@@ -22,7 +22,7 @@ const Waiting = () => {
                             <rect
                                 fill="#FFB84D"
                                 stroke="#FFB84D"
-                                stroke-width="15"
+                                strokeWidth="15"
                                 width="30"
                                 height="30"
                                 x="25"
@@ -41,7 +41,7 @@ const Waiting = () => {
                             <rect
                                 fill="#FFB84D"
                                 stroke="#FFB84D"
-                                stroke-width="15"
+                                strokeWidth="15"
                                 width="30"
                                 height="30"
                                 x="85"
@@ -60,7 +60,7 @@ const Waiting = () => {
                             <rect
                                 fill="#FFB84D"
                                 stroke="#FFB84D"
-                                stroke-width="15"
+                                strokeWidth="15"
                                 width="30"
                                 height="30"
                                 x="145"

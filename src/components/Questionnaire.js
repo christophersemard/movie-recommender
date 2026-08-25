@@ -1,7 +1,6 @@
 "use client";
 import Select from "react-select";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 const moodOptions = [
     { value: "très triste, pleurs, depression", label: "😭" },
@@ -21,7 +20,7 @@ const Questionnaire = ({ onSubmit }) => {
     const [moviePreference, setMoviePreference] = useState([]);
     const [mood, setMood] = useState("");
     const [age, setAge] = useState("");
-    const [genrePreference, setGenrePreference] = useState("");
+    const [genrePreference, setGenrePreference] = useState([]);
 
     // Dans le composant Questionnaire
     const [genres, setGenres] = useState([]);
@@ -77,27 +76,17 @@ const Questionnaire = ({ onSubmit }) => {
     };
 
     useEffect(() => {
-        // Appel à l'API pour récupérer les genres
-        axios
-            .get("/api/genres")
-            .then((response) => {
-                setGenres(response.data);
-            })
-            .catch((error) =>
-                console.error(
-                    "Erreur lors de la récupération des genres",
-                    error
-                )
-            );
+        Promise.all([fetch("/api/genres"), fetch("/api/movies")])
+            .then(async ([genresResponse, moviesResponse]) => {
+                if (!genresResponse.ok || !moviesResponse.ok) {
+                    throw new Error("Le catalogue est indisponible.");
+                }
 
-        // Appel à l'API pour récupérer la liste des films
-        axios
-            .get("/api/movies")
-            .then((response) => {
-                setMovies(response.data);
+                setGenres(await genresResponse.json());
+                setMovies(await moviesResponse.json());
             })
             .catch((error) =>
-                console.error("Erreur lors de la récupération des films", error)
+                console.error("Erreur lors du chargement du catalogue", error)
             );
     }, []);
 
